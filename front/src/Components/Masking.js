@@ -67,8 +67,8 @@ export default function Masking() {
                     </div>
                 ))}
             </div>
-            <button className='border mr-3 p-2 mt-4' onClick={handleAddMore}>Add Files</button>
-            <button className='border ml-4 p-2' onClick={handleUpload}>Upload</button>
+            <button className='border mr-3 p-2 mt-4 bg-black text-white rounded-xl' onClick={handleAddMore}>Add Files</button>
+            <button className='border ml-4 p-2 bg-black text-white rounded-xl' onClick={handleUpload}>Upload</button>
             <div class="mt-10">
 
                 <h1 className='font-bold'>The URL for the uploaded File is : <h1 className='font-semibold'>{value}</h1></h1>

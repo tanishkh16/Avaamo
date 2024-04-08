@@ -33,7 +33,8 @@ export default function Synonym() {
                 'Content-Type': 'multipart/form-data'
             }
         }).then((res) => {
-            console.log("hello",res.data.data[0].word);
+            console.log("hello", res.data.data[0]);
+            console.log(res.data)
             setValue(res.data.data)
             console.log(value)
         }).catch((err) => {
@@ -67,19 +68,27 @@ export default function Synonym() {
       </div>
     ))}
     </div>
-    <button className='border mr-3 p-2 mt-4' onClick={handleAddMore}>Add More</button>
-    <button className='border ml-4 p-2' onClick={handleUpload}>Upload</button>
+    <button className='border mr-3 p-2 mt-4 bg-black text-white rounded-xl' onClick={handleAddMore}>Add More</button>
+    <button className='border ml-4 p-2 text-white bg-black rounded-xl' onClick={handleUpload}>Upload</button>
     
-{Array.isArray(value) && value.map((item,index)=>{
-    return(
-        <div className='border p-2 mt-4'>
+    {Array.isArray(value) &&
+  value.map((item, index) => {
+    return (
+      <div className='border p-2 mt-4'>
         <div>
-        <h1 className='text-lg'>Word: {item.word}</h1>
-        <h1 className='text-lg'>Synonyms: {item.synonyms}</h1>
+          <h1 className=' text-xl text-left font-bold'>Word: {item.word}</h1>
+          <h1 className='text-lg text-left mt-2 mb-2 font-medium '>Synonyms:</h1>
+          <div className='grid grid-cols-5 gap-2'>
+            {item.synonyms.map((synonym, idx) => (
+              <div key={idx} className='text-left text-sm'>{synonym}</div>
+            ))}
+          </div>
         </div>
-        </div>
-    )
-})}
+      </div>
+    );
+  })}
+
+
 
   </div>
   )
