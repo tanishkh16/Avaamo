@@ -44,9 +44,9 @@ export default function UniqueWord() {
       });
   };
   return (
-    <div>
+    <div >
     <input
-    className='w-96 border p-2 mt-2'
+    className='w-96 border p-2 mt-2 '
       type="email"
       value={email}
       onChange={(e) => setEmail(e.target.value)}
@@ -55,27 +55,30 @@ export default function UniqueWord() {
     <div>
 
     {files.map((file, index) => (
-      <div className='border w-64 flex justify-center' key={index}>
+      <div className='border w-64 ml-96 mt-2  flex justify-center' key={index}>
         <input type="file" name="files" multiple onChange={(e) => handleFileChange(e, index)} />
       </div>
     ))}
     </div>
-    <button className='border mr-3 p-2 mt-4' onClick={handleAddMore}>Add More</button>
-    <button className='border ml-4 p-2' onClick={handleUpload}>Upload</button>
+    <button className='border mr-3 p-2 mt-4 bg-black text-white rounded-xl' onClick={handleAddMore}>Add More Files</button>
+    <button className='border ml-4 p-2 bg-black text-white rounded-xl' onClick={handleUpload}>Submit</button>
     <div class="grid grid-cols gap-2">
   {Array.isArray(value) &&
     value.map((item) => (
-      <div>
-        <h1 className='text-left font-bold ml-4 mt-16'> FileName: {item.fileName}</h1>
-            <h1 className='text-left mt-4 ml-2 -mb-4'>WordCount:</h1><br></br>
-        <div className="flex flex-wrap gap-4">
-          {Object.entries(item.wordCount).map(([word, count], index) => (
-            <div  className='flex pl-2' key={word}>
-              <h1 className='font-medium'>{word}:</h1>
-               {count} 
-            </div>
-          ))}
-        </div>
+      <div className='border p-2 mt-4'>
+        <h1 className='text-left font-bold ml-2 '> FileName: {item.fileName}</h1>
+            <h1 className='text-left mt-4 ml-2 font-bold -mb-4'>WordCount:</h1><br></br>
+            <div className="grid grid-cols-11 mb-4 gap-4">
+  {Object.entries(item.wordCount).map(([word, count], index) => (
+    <div className="col-span-1" key={word}>
+      <div className="flex items-center">
+        <h1 className="font-medium ml-2 text-xs">{word}:</h1>
+        <span className="ml-1 text-xs">{count}</span>
+      </div>
+    </div>
+  ))}
+</div>
+
       </div>
     ))}
 </div>

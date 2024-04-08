@@ -33,7 +33,7 @@ export default function Synonym() {
                 'Content-Type': 'multipart/form-data'
             }
         }).then((res) => {
-            console.log(res.data.data[0]);
+            console.log("hello",res.data.data[0].word);
             setValue(res.data.data)
             console.log(value)
         }).catch((err) => {
@@ -69,10 +69,17 @@ export default function Synonym() {
     </div>
     <button className='border mr-3 p-2 mt-4' onClick={handleAddMore}>Add More</button>
     <button className='border ml-4 p-2' onClick={handleUpload}>Upload</button>
-    <div class="grid grid-cols gap-2">
- 
-</div>
-
+    
+{Array.isArray(value) && value.map((item,index)=>{
+    return(
+        <div className='border p-2 mt-4'>
+        <div>
+        <h1 className='text-lg'>Word: {item.word}</h1>
+        <h1 className='text-lg'>Synonyms: {item.synonyms}</h1>
+        </div>
+        </div>
+    )
+})}
 
   </div>
   )
